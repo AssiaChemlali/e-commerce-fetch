@@ -1,7 +1,7 @@
-import React from 'react'
 
 const Shop = () => {
-  return (
+
+return (
     <div>
       
     </div>

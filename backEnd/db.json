@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Wireless Headphones",
+      "category": "Electronics",
+      "price": 79.99,
+        "image": "https://picsum.photos/id/180/300/300"
+    },
+    {
+      "id": 2,
+      "title": "Running Shoes",
+      "category": "Sports",
+      "price": 120.00,
+      "image": "https://picsum.photos/id/21/300/300"
+    },
+    {
+      "id": 3,
+      "title": "Coffee Maker",
+      "category": "Home",
+      "price": 45.50,
+      "image": "https://picsum.photos/id/30/300/300"
+    },
+    {
+      "id": 4,
+      "title": "Backpack",
+      "category": "Accessories",
+      "price": 35.00,
+       "image": "https://picsum.photos/id/1062/300/300"
+    }
+  ]
+}
