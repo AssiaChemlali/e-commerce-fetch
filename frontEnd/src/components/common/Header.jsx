@@ -3,7 +3,7 @@ import { NavLink } from 'react-router'
 import { links } from '../../data'
 const Header = () => {
   return (
-    <header className='flex justify-between bg-light py-2 px-5 shadow rounded-xl'>
+    <header className='flex justify-between bg-light py-2 px-5 shadow rounded-xl w-full'>
       <div className="w-full text-bold text-xl">
         <NavLink to="." className="text-dark" end>Orima</NavLink>
       </div>

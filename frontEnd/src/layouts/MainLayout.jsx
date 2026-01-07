@@ -4,9 +4,9 @@ import { Outlet } from 'react-router'
 import Footer from '../components/common/Footer'
 const MainLayout = () => {
   return (
-    <div className='p-10'>
+    <div className='p-10 w-full lg:w-200  flex  flex-col items-center mx-auto'>
       <Header />
-      <main className='h-dvh'>
+      <main className='h-dvh w-full'>
         <Outlet />
       </main>
       <Footer />

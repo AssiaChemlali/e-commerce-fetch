@@ -1,24 +1,30 @@
 @import "tailwindcss";
 
 
-@theme{
-  --color-background:var(--color-gray-100);
-  --color-primary:var(--color-gray-900);
-  --color-secondary:var(--color-gray-500);
-  --color-accent:var(--color-blue-500);
-  --color-light:var(--color-white);
-  --color-dark:var(--color-black);
-  --color-hover:var(--color-gray-100)
-}
-body{
-background-color: var(--color-background);
+@theme {
+  --color-background: var(--color-gray-100);
+  --color-primary: var(--color-gray-900);
+  --color-secondary: var(--color-gray-500);
+  --color-accent: var(--color-blue-500);
+  --color-light: var(--color-white);
+  --color-dark: var(--color-black);
+  --color-hover: var(--color-gray-100)
 }
 
-@layer utilities{
-  .active{
-    @apply  text-accent
+body {
+  background-color: var(--color-background);
+}
+
+@layer utilities {
+  .active {
+    @apply text-accent
   }
-  .link{
+
+  .link {
     @apply cursor-pointer
+  }
+
+  .table-col {
+    @apply px-4 py-2 text-left
   }
 }

@@ -5,7 +5,7 @@ const Loading = ({children,loading,error}) => {
     <div className=''>
       {
         loading 
-        ?<p className='text-primary'>loading please wait ...</p>
+        ?<p className='text-primary'>loading content.</p>
         :error
         ?<p className='text-red-500'>{error}</p>
         :children
