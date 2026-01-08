@@ -4,7 +4,7 @@
       "id": "2",
       "title": "Running Shoes",
       "category": "Lifestyle",
-      "price": 20,
+      "price": 123,
       "image": "https://picsum.photos/id/21/300/300"
     },
     {
@@ -29,7 +29,7 @@
       "image": "https://picsum.photos/id/30/300/300"
     },
     {
-      "id": 257,
+      "id": "257",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
       "title": "tshirt",
       "category": "Home",

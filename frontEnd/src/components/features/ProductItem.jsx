@@ -1,5 +1,5 @@
 
-import { Link} from "react-router"
+import { Link } from "react-router"
 
 const ProductItem = ({ product, deleteProduct }) => {
 
@@ -14,13 +14,17 @@ const ProductItem = ({ product, deleteProduct }) => {
       <td className="table-col">{product?.id} - {product?.title}</td>
       <td className="table-col">{product?.category}</td>
       <td className="table-col">{product?.price.toFixed(2)} $</td>
-      <td class="table-col flex items-center gap-2 text-sm  ">
-        
-        <Link to={`/products/${product.id}/edit`} className="text-accent ">Edit</Link>
+      <td class="table-col flex items-center gap-2  justify-between  ">
+
         <Link
-          onClick={() => deleteProductHandler(product.id)}
-          className="text-accent "
-        >Delete</Link>
+          to={`/products/${product.id}/edit`}
+          className="text-green-500 ">Edit
+        </Link>
+
+        <Link
+          onClick={() => deleteProductHandler(product?.id)}
+          className="text-red-500 ">Delete
+        </Link>
       </td>
     </tr>
   )
