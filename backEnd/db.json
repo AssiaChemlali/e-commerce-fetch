@@ -1,39 +1,46 @@
 {
   "products": [
     {
-      "id": "2",
-      "title": "Running Shoes",
-      "category": "Lifestyle",
-      "price": 123,
-      "image": "https://picsum.photos/id/21/300/300"
-    },
-    {
-      "id": "3",
-      "title": "Coffee Maker2",
-      "category": "Home",
-      "price": 45.5,
-      "image": "https://picsum.photos/id/30/300/300"
-    },
-    {
       "id": "4",
-      "title": "Backpack",
-      "category": "Accessories",
-      "price": 35,
+      "title": "aaazeerdf",
+      "category": "Sports",
+      "price": 35333,
       "image": "https://picsum.photos/id/1062/300/300"
     },
     {
-      "id": "434",
-      "title": "Smart Watch",
-      "category": "Electronics",
-      "price": 149,
-      "image": "https://picsum.photos/id/30/300/300"
+      "id": "a284",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+      "title": "lllll",
+      "category": "Accessories",
+      "price": 12
     },
     {
-      "id": "257",
+      "id": "fe0a",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-      "title": "tshirt",
+      "title": "gggg",
       "category": "Home",
-      "price": 59
+      "price": 111
+    },
+    {
+      "id": "f5eb",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+      "title": "lll",
+      "category": "Home",
+      "price": 12
+    },
+    {
+      "id": "1ee7",
+      "image": "https://picsum.photos/id/21/300/300",
+      "title": "uyiyu",
+      "category": "Sports",
+      "price": 222
+    },
+    {
+      "id": "39df",
+      "image": "https://picsum.photos/id/30/300/300",
+      "title": "jjjjjjjjjjjjj",
+      "category": "Sports",
+      "price": 14444
     }
   ]
 }

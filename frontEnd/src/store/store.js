@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
 import products from "./products/productsSlice"
+import auth from "./auth/authSlice"
 const store = configureStore({
   reducer: {
-    products
+    products,
+    auth
   }
 
 })

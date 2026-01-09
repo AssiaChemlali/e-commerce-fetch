@@ -4,12 +4,13 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { cleanProduct, editProduct, getProduct, insertPrduct } from '../store/products/productsSlice';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ProductShema } from '../utils/ValidationSchema';
 
 export const useProductInfo = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { product } = useSelector(state => state.products)
+  const { product,loading,error } = useSelector(state => state.products)
 
   useEffect(() => {
     if (id) {
@@ -32,6 +33,8 @@ export const useProductInfo = () => {
       category: product?.category ?? "",
       price: product?.price ?? "",
     },
+
+    validationSchema: ProductShema,
     onSubmit: values => {
       let dispatchFn;
       let newProduct = {
@@ -64,7 +67,7 @@ export const useProductInfo = () => {
   })
 
 
-  return { formik, id }
+  return { formik, id ,error,loading}
 }
 
 

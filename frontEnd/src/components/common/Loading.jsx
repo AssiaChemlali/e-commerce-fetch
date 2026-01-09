@@ -1,16 +1,14 @@
-import React from 'react'
 
-const Loading = ({children,loading,error}) => {
-  return (
+const Loading = ({children,loading,error,type}) => {
+
+ return (
     <div className=''>
       {
         loading 
-        ?<p className='text-primary'>loading content.</p>
+        ?<p className='text-primary'>skeleton... {type}</p>
         :error
         ?<p className='text-red-500'>{error}</p>
         :children
-
-      
       }
     </div>
   )

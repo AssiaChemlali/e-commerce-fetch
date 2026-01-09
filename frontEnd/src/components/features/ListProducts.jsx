@@ -1,5 +1,5 @@
 import ProductItem from "./ProductItem"
-
+import { memo } from "react"
 
 const ListProducts = ({ data, deleteProduct }) => {
   return (
@@ -7,9 +7,9 @@ const ListProducts = ({ data, deleteProduct }) => {
       <thead className="bg-light">
         <tr className="bg-light border border-hover">
           <th className="table-col">Image</th>
-          <th className=" table-col">Name</th>
+          <th className=" table-col">Title</th>
           <th className=" table-col">Category</th>
-          <th className=" table-col">price</th>
+          <th className=" table-col">Price</th>
           <th className=" table-col"></th>
         </tr>
       </thead>
@@ -26,4 +26,4 @@ const ListProducts = ({ data, deleteProduct }) => {
   )
 }
 
-export default ListProducts
+export default memo(ListProducts)

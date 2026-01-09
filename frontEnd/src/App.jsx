@@ -17,10 +17,13 @@ const EditProduct =lazy(()=>import("./pages/EditProduct.jsx"))
 import MainLayout from "./layouts/MainLayout"
 import { Suspense } from "react"
 import LoadingPage from "./pages/LoadingPage.jsx"
+import Error from "./pages/Error.jsx"
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement:<Error/>,
     children: [
       { index: true, element: <Suspense fallback={<LoadingPage/>}><Home /></Suspense> },
       { path: "shop", element: <Suspense fallback={<LoadingPage/>}><Shop /></Suspense> },

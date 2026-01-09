@@ -1,6 +1,6 @@
 
 import ProductInfo from '../components/features/ProductInfo'
-import { useParams } from 'react-router-dom'
+
 
 const EditProduct = () => {
 
