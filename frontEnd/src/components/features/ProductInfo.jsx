@@ -69,9 +69,6 @@ const ProductInfo = () => {
             : "Update Product"}
         </Button>
 
-     
-
-
     </form>
   )
 }

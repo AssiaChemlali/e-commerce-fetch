@@ -42,6 +42,7 @@ export const useProductInfo = () => {
         title: values.title,
         category: values.category,
         price: values.price,
+       
       }
       if (!id) {
         dispatchFn = insertPrduct(newProduct)

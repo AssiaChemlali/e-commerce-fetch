@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { deletePrduct, fetchProducts } from "../store/products/productsSlice"
 import { Link } from "react-router"
-import ListProducts from "../components/features/ListProducts"
+import TableProducts from "../components/features/TableProducts"
 import Loading from '../components/common/Loading'
 import Button from "../components/common/Button"
 import WithGurad from "../utils/WithGurad"
@@ -28,7 +28,7 @@ const Products = () => {
 
       </div>
       <Loading loading={loading} error={error} type="table">
-        <ListProducts
+        <TableProducts
           data={products}
           deleteProduct={deleteProduct}
         />

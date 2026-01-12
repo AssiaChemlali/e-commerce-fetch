@@ -5,31 +5,49 @@ import { useSelector } from 'react-redux'
 import Button from './Button'
 import profileImg from '../../assets/profile.jpg'
 import { useState } from 'react'
+import { GetTotalCartQunatity } from '../../utils/utils'
+
+import { FaShoppingCart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { GetTotalWishlist } from '../../utils/utils'
+
 const Header = () => {
   const { isLogIn } = useSelector(state => state.auth)
   const [open, setOpen] = useState(false)
-  return (
-    <header className='flex  items-center justify-between bg-light py-2 px-5 shadow rounded-xl w-full gap-5'>
+  const totalQuantity = GetTotalCartQunatity()
+  const totalWishlist=GetTotalWishlist()
 
-      <div className="text-bold text-xl">
-        <NavLink to="." className="text-dark" end>Orima</NavLink>
+  return (
+    <header className='flex  items-center justify-between bg-light py-5 px-5 shadow rounded-full w-full gap-5'>
+
+      <div className="">
+        <NavLink to="." className="text-dark font-bold text-2xl" end>Orima</NavLink>
       </div>
 
 
-      <nav className='flex items-center justify-center gap-5'>
+      <nav className='hidden sm:flex items-center justify-center gap-5'>
         {links.map((link, index) => (
           <NavLink
             key={index}
             to={link.link}
             className="capitalize font-semibold cursor-pointer hover:text-accent">{link.label}</NavLink>
         ))}
-
-
-
       </nav>
 
 
-      <div className='flex relative'>
+      <div className='flex relative items-center gap-2'>
+        <div className='flex items-center gap-3 mr-3'>
+          <Link to="cart" className='relative '>
+            <FaShoppingCart size={20} />
+            <span className='bg-background text-primary rounded-full  w-6 h-6 flex  items-center  justify-center absolute -top-5 -right-3  text-sm'> {totalQuantity}</span>
+
+          </Link>
+          <Link to="whishlist" className='relative '>
+            <FaHeart size={20} />
+            <span className='bg-background text-primary rounded-full  w-6 h-6 flex  items-center  justify-center absolute -top-5 -right-3  text-sm'> { totalWishlist}</span>
+
+          </Link>
+        </div>
 
 
 

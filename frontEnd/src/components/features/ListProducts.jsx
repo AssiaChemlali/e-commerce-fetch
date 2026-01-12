@@ -1,29 +1,16 @@
-import ProductItem from "./ProductItem"
-import { memo } from "react"
 
-const ListProducts = ({ data, deleteProduct }) => {
+import Product from './Product'
+const ListProducts = ({ products }) => {
   return (
-    <table className="w-full border border-hover shadow">
-      <thead className="bg-light">
-        <tr className="bg-light border border-hover">
-          <th className="table-col">Image</th>
-          <th className=" table-col">Title</th>
-          <th className=" table-col">Category</th>
-          <th className=" table-col">Price</th>
-          <th className=" table-col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {data?.map((product) => (
-          <ProductItem
-            product={product}
-            key={product.id}
-            deleteProduct={deleteProduct}
-          />
-        ))}
-      </tbody>
-    </table>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+      {products.map((product) => (
+        <Product
+          product={product}
+          key={product.id}
+        />
+      ))}
+    </div>
   )
 }
 
-export default memo(ListProducts)
+export default ListProducts

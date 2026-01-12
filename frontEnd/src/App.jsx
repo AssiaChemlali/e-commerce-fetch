@@ -8,11 +8,12 @@ import { lazy } from "react"
 // pages
 const Home=lazy(()=>import("./pages/Home")) 
 const Shop =lazy(()=>import( './pages/Shop.jsx'))
-const  Products= lazy(()=>import ('./pages/Products')) 
+const Products= lazy(()=>import ('./pages/Products')) 
 const Login =lazy(()=>import('./pages/Login')) 
 const Register =lazy(()=>import( './pages/Register'))
 const AddProduct =lazy(()=>import("./pages/AddProduct.jsx")) 
 const EditProduct =lazy(()=>import("./pages/EditProduct.jsx"))
+const Cart =lazy(()=>import("./pages/Cart.jsx"))
 
 import MainLayout from "./layouts/MainLayout"
 import { Suspense } from "react"
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "products/:id/edit", element: <Suspense fallback={<LoadingPage/>}><EditProduct /></Suspense> },
       { path: "login", element:<Suspense fallback={<LoadingPage/>}><Login /></Suspense>  },
       { path: "register", element: <Suspense fallback={<LoadingPage/>}><Register /></Suspense> },
+      { path: "cart", element: <Suspense fallback={<LoadingPage/>}><Cart /></Suspense> },
     ]
   }
 ])
