@@ -14,10 +14,6 @@ export const GetTotalCartQunatity = () => {
 
 }
 
-
-
-
-
 export const GetTotalWishlist = () => {
   const { wishlist } = useSelector(state => state?.wishlist)
   const totalQuantity = wishlist?.length

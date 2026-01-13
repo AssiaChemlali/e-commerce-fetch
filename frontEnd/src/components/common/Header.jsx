@@ -34,7 +34,6 @@ const Header = () => {
         ))}
       </nav>
 
-
       <div className='flex relative items-center gap-2'>
         <div className='flex items-center gap-3 mr-3'>
           <Link to="cart" className='relative '>
@@ -42,10 +41,11 @@ const Header = () => {
             <span className='bg-background text-primary rounded-full  w-6 h-6 flex  items-center  justify-center absolute -top-5 -right-3  text-sm'> {totalQuantity}</span>
 
           </Link>
-          <Link to="whishlist" className='relative '>
+          <Link 
+          to="wishlist" 
+          className='relative '>
             <FaHeart size={20} />
             <span className='bg-background text-primary rounded-full  w-6 h-6 flex  items-center  justify-center absolute -top-5 -right-3  text-sm'> { totalWishlist}</span>
-
           </Link>
         </div>
 
@@ -73,7 +73,6 @@ const Header = () => {
                   to=""
                   className="block px-5 py-3 hover:bg-accent hover:text-white">Log out</NavLink>
               </li>
-
             </ul>)}
 
 

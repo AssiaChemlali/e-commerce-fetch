@@ -6,7 +6,7 @@ const MainLayout = () => {
   return (
     <div className='p-10 w-full lg:w-300  flex  flex-col items-center mx-auto'>
       <Header />
-      <main className='h-dvh w-full'>
+      <main className='h-full w-full'>
         <Outlet />
       </main>
       <Footer />

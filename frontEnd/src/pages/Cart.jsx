@@ -3,8 +3,7 @@ import Heading from '../components/common/Heading'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../store/products/productsSlice'
 import { removeFromCart, updateCartQuantity } from '../store/cart/cartSlice'
-import Button from '../components/common/Button'
-import { Link } from 'react-router'
+
 import CartItemList from '../components/features/CartItemList'
 import CartTotal from '../components/features/CartTotal'
 
@@ -29,7 +28,6 @@ const Cart = () => {
         title: product.title,
         price: product.price,
         quantity: item.quantity
-
       }
     }
     )
@@ -76,7 +74,7 @@ const Cart = () => {
 
         </table>
 
-       <CartTotal/>
+       <CartTotal productsFullInfo={productsFullInfo}/>
       </div>
     </div>
   )

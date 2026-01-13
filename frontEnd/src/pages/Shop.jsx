@@ -14,12 +14,7 @@ const Shop = () => {
     dispatch(fetchProducts())
   }, [dispatch])
 
-
   
-
-
-
-
   return (
     <div className="mt-10">
       <Heading title="shop"/>
