@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { CiHeart } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
-import { likeToggle ,fetchWishlist} from '../../store/wishlist/wishlistSlice';
+import { likeToggle, fetchWishlist } from '../../store/wishlist/wishlistSlice';
 import { FaHeart } from "react-icons/fa";
 import { addToCart } from '../../store/cart/cartSlice';
+
+import Button from "../common/Button"
 const Product = ({ product }) => {
 
   const [isLiked, setIsLiked] = useState(false)
@@ -17,22 +19,22 @@ const Product = ({ product }) => {
   const likeToggleHandler = (id) => {
     setIsLiked(!isLiked)
     dispatch(likeToggle(id))
-  
-   
+
+
   }
 
   useEffect(() => {
     dispatch(fetchWishlist())
-  }, [dispatch,product.id])
+  }, [dispatch, product.id])
 
- 
+
   useEffect(() => {
     const islike = wishlist.some((item) => item.id === product.id)
-  setIsLiked(islike)
-  }, [wishlist,product.id])
+    setIsLiked(islike)
+  }, [wishlist, product.id])
 
 
- 
+
 
   return (
     <div
@@ -59,15 +61,12 @@ const Product = ({ product }) => {
         <h1 className="my-2 font-bold text-lg text-primary">{product.id} - {product.title}</h1>
 
         <p className="mb-5">{product.price.toFixed(2)} $</p>
-        <button
-          onClick={() => addToCartHandler(product.id)}
-          type="submit"
-          className="bg-accent text-white py-1 px-2 rounded-md ">
+       
+        <Button
+          onClick={() => addToCartHandler(product.id)} 
+          type="submit" >
           Add to cart
-        </button>
-        {/* <Button type="submit" >
-               
-              </Button> */}
+        </Button>
       </div>
 
     </div>
