@@ -38,14 +38,14 @@ const Header = () => {
         <div className='flex items-center gap-3 mr-3'>
           <Link to="cart" className='relative '>
             <FaShoppingCart size={20} />
-            <span className='bg-background text-primary rounded-full  w-6 h-6 flex  items-center  justify-center absolute -top-5 -right-3  text-sm'> {totalQuantity}</span>
+            <span className='bg-accent text-light rounded-full  w-6 h-6 flex  items-center  justify-center absolute -top-4 -right-3  text-sm'> {totalQuantity}</span>
 
           </Link>
           <Link 
           to="wishlist" 
           className='relative '>
             <FaHeart size={20} />
-            <span className='bg-background text-primary rounded-full  w-6 h-6 flex  items-center  justify-center absolute -top-5 -right-3  text-sm'> { totalWishlist}</span>
+            <span className='bg-accent text-light rounded-full  w-6 h-6 flex  items-center  justify-center absolute -top-4 -right-3  text-sm'> { totalWishlist}</span>
           </Link>
         </div>
 
