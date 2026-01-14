@@ -21,3 +21,23 @@ export const GetTotalWishlist = () => {
 
 
 }
+
+
+export const getContries = async () => {
+  try {
+    const res = await fetch("https://countriesnow.space/api/v0.1/countries")
+    const data = await res.json()
+    const countries = data.data.map(item => ({
+      country: item.country,
+      cities: item.cities
+    }))
+
+
+    return countries
+
+  } catch (error) {
+    console.log(error)
+  }
+
+
+}

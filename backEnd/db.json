@@ -231,5 +231,12 @@
   ],
   "users": [],
   "login": [],
-  "wishlist": []
+  "wishlist": [
+    {
+      "id": "3"
+    },
+    {
+      "id": "4"
+    }
+  ]
 }

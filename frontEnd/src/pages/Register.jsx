@@ -8,6 +8,7 @@ const Register = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  
   const formik = useFormik({
     initialValues: {
       fullName: '',
