@@ -229,7 +229,14 @@
       }
     }
   ],
-  "users": [],
+  "users": [
+    {
+      "id": "63df",
+      "username": "sali",
+      "password": "222",
+      "email": "sali@gmail.com"
+    }
+  ],
   "login": [],
   "wishlist": [
     {

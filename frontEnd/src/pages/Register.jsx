@@ -2,7 +2,7 @@
 import { useFormik } from 'formik';
 import Button from '../components/common/Button';
 import { useDispatch } from 'react-redux';
-import { register } from '../store/auth/authSlice';
+import {signUp } from '../store/auth/authSlice';
 import { useNavigate } from 'react-router';
 const Register = () => {
 
@@ -11,18 +11,18 @@ const Register = () => {
   
   const formik = useFormik({
     initialValues: {
-      fullName: '',
+      username: '',
       password: '',
       email: '',
     },
     onSubmit: values => {
-      dispatch(register({
-        fullName: values.fullName,
+      dispatch(signUp({
+        username: values.username,
         password: values.password,
         email: values.email,
       }))
        .unwrap()
-        .then(() => { navigate("/") })
+        .then(() => { navigate("/login") })
         .catch((error) => {
           console.log(error)
         })
@@ -34,14 +34,14 @@ const Register = () => {
       <form
         className='flex flex-col capitalize text-sm w-full'
         onSubmit={formik.handleSubmit}>
-        <label htmlFor="fullName">Full Name</label>
+        <label htmlFor="username">usename</label>
         <input
-          id="fullName"
-          name="fullName"
+          id="username"
+          name="username"
           type="text"
           onChange={formik.handleChange}
-          value={formik.values.fullName}
-          className='bg-background py-2 px-3 rounded-md mb-3 capitalize'
+          value={formik.values.username}
+          className='bg-background py-2 px-3 rounded-md mb-3 '
         />
         <label htmlFor="email">Email Address</label>
         <input
@@ -50,14 +50,14 @@ const Register = () => {
           type="email"
           onChange={formik.handleChange}
           value={formik.values.email}
-          className='bg-background py-2 px-3 rounded-md mb-3 capitalize'
+          className='bg-background py-2 px-3 rounded-md mb-3 '
         />
         <label htmlFor="password">password</label>
         <input
           id="password"
           name="password"
           type="password"
-          className='bg-background py-2 px-3 rounded-md mb-3 capitalize'
+          className='bg-background py-2 px-3 rounded-md mb-3 '
           onChange={formik.handleChange}
           value={formik.values.password}
         />

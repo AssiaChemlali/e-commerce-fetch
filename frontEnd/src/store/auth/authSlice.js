@@ -1,20 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
+
+
 export const logIn = createAsyncThunk("auth/logIn",
   async (user, thunkAPI) => {
 
     const { rejectWithValue } = thunkAPI
     try {
-      const res = await fetch(`http://localhost:4000/login`, {
-        method: "POST",
-        body: JSON.stringify(user),
-        headers: {
-          "Content-type": "application/json;charset=UTF-8"
-        }
-      })
-      const data = await res.json()
-      return data
+      const res = await fetch(`
+        http://localhost:4000/users?email=${user.email}&password=${user.password}`
+        
+        
+    
+    )
+    const data = await res.json()
+    if(data.length===0){
+       return rejectWithValue("Invalid email or password")
+    }
+      
+      return data[0]
     } catch (error) {
       return rejectWithValue(error)
     }
@@ -22,20 +27,20 @@ export const logIn = createAsyncThunk("auth/logIn",
 
 )
 
-export const register = createAsyncThunk("auth/register",
+export const signUp = createAsyncThunk("auth/signUp",
   async (user, thunkAPI) => {
-
+   
     const { rejectWithValue } = thunkAPI
     try {
-      const res = await fetch(`http://localhost:4000/register`, {
+      const res = await fetch(`http://localhost:4000/users`, {
         method: "POST",
         body: JSON.stringify(user),
         headers: {
-          "Content-type": "application/json; charset=UTF-8"
+          "Content-Type": "application/json;"
         }
       })
       const data = await res.json()
-      console.log(data)
+     
       return data
     } catch (error) {
       return rejectWithValue(error)
@@ -45,9 +50,11 @@ export const register = createAsyncThunk("auth/register",
 )
 
 const initialState = {
-  user: { id: "1", isLogIn: true },
+  users: [],
   loading: false,
   error: null,
+  user:{},
+  isLogIn:false,
   accessToken: null,
 
 
@@ -55,15 +62,25 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logOut:(state)=>{
+      state.user=null,
+      state.isLogIn=false,
+      state.accessToken=null
+    }
+
+  },
   extraReducers: (builder) => {
+
+    //login in
     builder.addCase(logIn.pending, (state) => {
       state.error = null
       state.loading = true
     })
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload
-      state.loading = false
+      state.loading = false,
+      state.isLogIn=true
     })
     builder.addCase(logIn.rejected, (state, action) => {
       state.error = action.payload
@@ -71,20 +88,24 @@ const authSlice = createSlice({
     })
 
     //register
-    builder.addCase(register.pending, (state) => {
+    builder.addCase(signUp.pending, (state) => {
       state.error = null
       state.loading = true
     })
-    builder.addCase(register.fulfilled, (state, action) => {
+    builder.addCase(signUp.fulfilled, (state, action) => {
       state.user = action.payload
       state.loading = false
+       state.isLogIn=true
     })
-    builder.addCase(register.rejected, (state, action) => {
+    builder.addCase(signUp.rejected, (state, action) => {
       state.error = action.payload
       state.loading = false
     })
 
+   
+
   }
 
 })
+export const {logOut}=authSlice.actions
 export default authSlice.reducer

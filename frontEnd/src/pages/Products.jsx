@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { deletePrduct, fetchProducts } from "../store/products/productsSlice"
+import { deletePrduct, fetchProducts, productCleanUp } from "../store/products/productsSlice"
 import { Link } from "react-router"
 import TableProducts from "../components/features/TableProducts"
 import Loading from '../components/common/Loading'
@@ -12,6 +12,10 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchProducts())
+
+    return ()=>{
+      dispatch(productCleanUp())
+    }
   }, [dispatch])
 
   const deleteProduct = useCallback((id) => {
@@ -27,7 +31,7 @@ const Products = () => {
         </Button>
 
       </div>
-      <Loading loading={loading} error={error} type="table">
+      <Loading loading={loading} error={error} type="product">
         <TableProducts
           data={products}
           deleteProduct={deleteProduct}

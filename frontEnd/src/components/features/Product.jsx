@@ -7,33 +7,28 @@ import { addToCart } from '../../store/cart/cartSlice';
 
 import Button from "../common/Button"
 const Product = ({ product }) => {
-
-  const [isLiked, setIsLiked] = useState(false)
   const dispatch = useDispatch()
   const { wishlist } = useSelector(state => state.wishlist)
 
-  const addToCartHandler = (id) => {
-    dispatch(addToCart(id))
-  }
-
-  const likeToggleHandler = (id) => {
-    setIsLiked(!isLiked)
-    dispatch(likeToggle(id))
-
-
-  }
-
-  useEffect(() => {
-    dispatch(fetchWishlist())
-  }, [dispatch, product.id])
+  const userId = useSelector(state => state.auth.user?.id)
 
 
   useEffect(() => {
-    const islike = wishlist.some((item) => item.id === product.id)
-    setIsLiked(islike)
-  }, [wishlist, product.id])
+    if (userId) {
+      dispatch(fetchWishlist(userId))
+    }
+  }, [userId, dispatch])
+
+  const isLiked = wishlist.some((item) => item.id === product.id)
 
 
+  const addToCartHandler = () => {
+    dispatch(addToCart(product.id))
+  }
+
+  const likeToggleHandler = () => {
+    dispatch(likeToggle(product.id))
+  }
 
 
   return (
@@ -44,7 +39,9 @@ const Product = ({ product }) => {
 
         <img src={product.image} alt="" className="object-contain w-50 h-50 " />
 
-        <span className='bg-light w-8 h-8 rounded-full flex items-center justify-center absolute top-3 right-3 cursor-pointer' onClick={() => likeToggleHandler(product.id)}>
+        <span className='bg-light w-8 h-8 rounded-full flex items-center justify-center absolute top-3 right-3 cursor-pointer'
+          onClick={likeToggleHandler}
+        >
           {isLiked
             ? <FaHeart size={15} className='text-red-500' />
             : <CiHeart size={15} className='' />
@@ -61,9 +58,9 @@ const Product = ({ product }) => {
         <h1 className="my-2 font-bold text-lg text-primary">{product.id} - {product.title}</h1>
 
         <p className="mb-5">{product.price.toFixed(2)} $</p>
-       
+
         <Button
-          onClick={() => addToCartHandler(product.id)} 
+          onClick={addToCartHandler}
           type="submit" >
           Add to cart
         </Button>

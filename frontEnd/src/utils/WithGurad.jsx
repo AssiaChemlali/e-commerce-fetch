@@ -6,7 +6,8 @@ const WithGurad = (Component) => {
 
 
   const Wrapper = (props) => {
-    const { isLogIn } = useSelector(state => state.auth.user)
+    const { isLogIn } = useSelector(state => state.auth)
+    console.log(isLogIn)
     return isLogIn
       ? <Component {...props} />
       : <div className='py-5 mt-10 text-lg  text-center'>

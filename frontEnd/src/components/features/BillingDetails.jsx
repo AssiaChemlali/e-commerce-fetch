@@ -4,31 +4,22 @@ import Button from '../common/Button'
 import { Link } from 'react-router'
 import { BillingShema } from '../../utils/ValidationSchema'
 import { useFormik } from 'formik'
-import { getContries } from '../../utils/utils'
+import { FetchContries, fetchCities } from '../../utils/api'
 import { useEffect, useState } from 'react'
 import Select from "../forms/Select"
 
 const BillingDetails = () => {
   const [countries, setCountries] = useState([])
+  const [cities, setCities] = useState([])
 
-  useEffect(() => {
-
-    const load = async () => {
-      const list = await getContries()
-      setCountries(list)
-
-    }
-    load()
-
-  }, [])
-
-
+  // Formik setup
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
       phone: "",
       country: "",
+      city: "",
       adress: "",
       zip: "",
       email: ""
@@ -36,11 +27,32 @@ const BillingDetails = () => {
     validationSchema: BillingShema,
     onSubmit: values => {
       console.log(values)
-
     }
-
   })
 
+  useEffect(() => {
+    const loadCountries = async () => {
+      const list = await FetchContries()
+      setCountries(list)
+    }
+    loadCountries()
+  }, [])
+
+
+  useEffect(() => {
+    const loadCities = async () => {
+      if (!formik.values.country) {
+        setCities([])
+        return
+      }
+      const list = await fetchCities(formik.values.country)
+      setCities(list)
+
+
+    }
+    loadCities()
+
+  }, [formik.values.country])
 
   return (
     <div className=' w-full lg:w-2/3  bg-light p-5'>
@@ -49,7 +61,6 @@ const BillingDetails = () => {
         type="submit"
         onSubmit={formik.handleSubmit}
         className='flex flex-col'>
-
         <Input
           type="text"
           label="First Name"
@@ -57,8 +68,6 @@ const BillingDetails = () => {
           onChange={formik.handleChange}
           value={formik.values.firstName}
           error={formik.errors.firstName}
-
-
         />
         <Input
           type="text"
@@ -88,10 +97,11 @@ const BillingDetails = () => {
         />
 
         <Select
+          id="cities"
           label="Town / City *"
           name="city"
           onChange={formik.handleChange}
-          data={countries}
+          data={cities}
           value={formik.values.city}
           error={formik.errors.city}
         />

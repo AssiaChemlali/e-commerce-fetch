@@ -5,16 +5,20 @@ import CartTotal from '../components/features/CartTotal'
 import Button from '../components/common/Button'
 import { Link } from 'react-router'
 import useCart from '../hooks/useCart'
-
+import Loading from '../components/common/Loading'
 const Cart = () => {
   const { productsFullInfo,
     deleteProductFromCartHandler,
-    countQuantityHandler, cart, products } = useCart()
+    countQuantityHandler, cart, products,error,loading } = useCart()
 
 
   return (
     <div className="mt-10">
       <Heading title="cart" />
+
+      <Loading error={error} loading={loading} type="cart">
+
+    
       <div className="flex gap-5 flex-col lg:flex-row ">
         {cart.length > 0 && products.length > 0
           ? (
@@ -49,7 +53,9 @@ const Cart = () => {
           </div>
         }
 
-      </div>
+      </div>  
+      
+      </Loading>
     </div>
   )
 }

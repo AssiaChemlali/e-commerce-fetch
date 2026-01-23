@@ -1,22 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  wishlist: [],
-  loading: false,
-  error: null
-}
+
 
 
 export const likeToggle = createAsyncThunk("wishlist/likeToggle", async (id, thunkAPI) => {
   const { rejectWithValue } = thunkAPI
   try {
 
-   const res=await fetch(`http://localhost:4000/wishlist/${id}`)
+    const res = await fetch(`http://localhost:4000/wishlist/${id}`)
     if (res.ok) {
-        await fetch(`http://localhost:4000/wishlist/${id}`, {
-          method: "DELETE"
-        })
-      
+      await fetch(`http://localhost:4000/wishlist/${id}`, {
+        method: "DELETE"
+      })
+
       return { type: "remove", id }
 
 
@@ -37,13 +33,18 @@ export const likeToggle = createAsyncThunk("wishlist/likeToggle", async (id, thu
 
 })
 
-export const fetchWishlist = createAsyncThunk('wishlist/fetchWishlist', async (_, thunkAPI) => {
+export const fetchWishlist = createAsyncThunk('wishlist/fetchWishlist', async (userId, thunkAPI) => {
   const { rejectWithValue } = thunkAPI
 
   try {
-    const res = await fetch("http://localhost:4000/wishlist")
+    const res = await fetch(`http://localhost:4000/wishlist?userId=${userId}`)
+    if (!res.ok) {
+      const text = await res.text()
+      return rejectWithValue(text)
+    }
     const data = await res.json()
     return data
+
   } catch (error) {
     return rejectWithValue(error)
   }
@@ -51,7 +52,12 @@ export const fetchWishlist = createAsyncThunk('wishlist/fetchWishlist', async (_
 
 
 })
-
+const initialState = {
+  wishlist: [],
+  user: {},
+  loading: false,
+  error: null
+}
 const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,

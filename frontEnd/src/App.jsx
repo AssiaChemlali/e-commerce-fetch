@@ -1,8 +1,6 @@
 
 
 import { createBrowserRouter, RouterProvider } from "react-router"
-import { Provider } from "react-redux"
-import store from "./store/store.js"
 import { lazy } from "react"
 
 // pages
@@ -16,6 +14,7 @@ const EditProduct = lazy(() => import("./pages/EditProduct.jsx"))
 const Cart = lazy(() => import("./pages/Cart.jsx"))
 const Checkout = lazy(() => import("./pages/Checkout.jsx"))
 const Wishlist = lazy(() => import("./pages/Wishlist.jsx"))
+const LogOut = lazy(() => import("./pages/LogOut.jsx"))
 
 import MainLayout from "./layouts/MainLayout"
 import { Suspense } from "react"
@@ -34,7 +33,8 @@ const router = createBrowserRouter([
       { path: "products/add", element: <Suspense fallback={<LoadingPage />}><AddProduct /></Suspense> },
       { path: "products/:id/edit", element: <Suspense fallback={<LoadingPage />}><EditProduct /></Suspense> },
       { path: "login", element: <Suspense fallback={<LoadingPage />}><Login /></Suspense> },
-      { path: "register", element: <Suspense fallback={<LoadingPage />}><Register /></Suspense> },
+      { path: "logout", element: <Suspense fallback={<LoadingPage />}><LogOut /></Suspense> },
+      { path: "signup", element: <Suspense fallback={<LoadingPage />}><Register /></Suspense> },
       { path: "cart", element: <Suspense fallback={<LoadingPage />}><Cart /></Suspense> },
       { path: "checkout", element: <Suspense fallback={<LoadingPage />}><Checkout /></Suspense> },
       { path: "wishlist", element: <Suspense fallback={<LoadingPage />}><Wishlist /></Suspense> },
@@ -45,10 +45,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <Provider store={store}>
       <RouterProvider router={router} />
-    </Provider>
-
   )
 }
 

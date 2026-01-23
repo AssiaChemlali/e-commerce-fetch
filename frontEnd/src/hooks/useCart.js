@@ -7,12 +7,15 @@ import { removeFromCart, updateCartQuantity } from '../store/cart/cartSlice'
 
 const useCart = () => {
 
-    const dispatch = useDispatch()
-  const { cart } = useSelector(state => state.cart)
+  const dispatch = useDispatch()
+  const { cart, error, loading } = useSelector(state => state.cart)
   const { products } = useSelector(state => state.products)
 
   useEffect(() => {
     dispatch(fetchProducts())
+    //  return ()=>{
+    //       dispatch(productCleanUp())
+    //     }
   }, [dispatch])
 
   const productsFullInfo = useMemo(() => {
@@ -46,11 +49,12 @@ const useCart = () => {
     dispatch(removeFromCart(id))
   }
   return {
-productsFullInfo,
-deleteProductFromCartHandler,
-countQuantityHandler,
-cart,
-products
+    productsFullInfo,
+    deleteProductFromCartHandler,
+    countQuantityHandler,
+    cart,
+    products,
+    error, loading
 
   }
 }

@@ -12,8 +12,8 @@ const Select = ({  label, name, onChange, value, error, data }) => {
         value={value}
         className='bg-background py-2 px-3 rounded-md capitalize w-full' >
         {
-          data?.map(c => (
-            <option key={c.country} value={c.country}>{c.country}</option>
+          data?.map((item,index) => (
+            <option key={index} value={item}>{item}</option>
           ))
         }
 

@@ -88,6 +88,9 @@ const productsSice = createSlice({
   name: "products",
   initialState,
   reducers: {
+     productCleanUp: (state) => {
+      state.products = []
+    },
     cleanProduct:(state)=>{
       state.product={}
     }
@@ -178,5 +181,5 @@ const productsSice = createSlice({
   }
 })
 
-export const {cleanProduct}=productsSice.actions
+export const {cleanProduct,productCleanUp}=productsSice.actions
 export default productsSice.reducer
